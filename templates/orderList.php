@@ -2,6 +2,8 @@
   session_start();
   include_once __DIR__.'/singleOrderList.php';
   
+  echo '<script type="text/javascript" src="makeRefundUrl.js"></script>';
+  
   try {
     $pdo = new PDO('mysql:host=192.168.1.34; dbname=kt_php_bookstore; charset=utf8', 'root', 'sj4321');
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

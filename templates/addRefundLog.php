@@ -5,11 +5,11 @@
     $pdo = new PDO('mysql:host=192.168.1.34; dbname=kt_php_bookstore; charset=utf8', 'root', 'sj4321');
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
-    $sql = "SELECT * FROM book_order WHERE id = ".$_GET['orderId'];
+    $sql = "SELECT * FROM book_order WHERE id = ".$_GET['id'];
     $result = $pdo->query($sql);
     $orderInfo = $result->fetch();
     
-    $sql = "INSERT INTO `book_order` (`user_id`, `user_addr`, `book_id`, `order_amount`, `order_date`, `order_state`, `order_type`, `order_relatedId`) VALUES (".$orderInfo['user_id'].", '".$orderInfo['user_addr']."', ".$orderInfo['book_id'].", 999, '".date("Y-m-d")."', 3, ".$orderInfo['order_type'].", ".$orderInfo['id'].")";
+    $sql = "INSERT INTO `book_order` (`user_id`, `user_addr`, `book_id`, `order_amount`, `order_date`, `order_state`, `order_type`, `order_relatedId`) VALUES (".$orderInfo['user_id'].", '".$orderInfo['user_addr']."', ".$orderInfo['book_id'].", ".$orderInfo['order_amount'].", '".date("Y-m-d")."', 3, ".$orderInfo['order_type'].", ".$_GET['id'].")";
     echo $sql.'<br>';
     
     $statement = $pdo->prepare($sql);
