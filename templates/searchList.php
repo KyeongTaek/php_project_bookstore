@@ -5,12 +5,16 @@
   try {
     $pdo = new PDO('mysql:host=192.168.1.34; dbname=kt_php_bookstore; charset=utf8', 'root', 'sj4321');
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    
+     
     $sql = "SELECT book_info.book_cover, book_info.book_title, book_info.book_author, book_info.book_publisher, book_info.book_cost, book_stock.book_count, book_info.id FROM book_info INNER JOIN book_stock ON book_info.id = book_stock.book_id WHERE book_info.book_title LIKE '%".$_GET['search_content']."%'"; // get book info
 //    echo $sql.'<br>';
     
     $result = $pdo->query($sql);
-
+    
+    if($result->columnCount() == 0) { // no books searched
+      
+    }
+    
     foreach($result as $row) {
 //      echo 'row start! <br>';
       
@@ -26,7 +30,7 @@
         $searchCount = 0;
         $ownTot = 0;
         
-        echo 'blahblahblah<br>';
+//        echo 'blahblahblah<br>';
       }
       else {
         $sql = "SELECT COUNT(*) FROM book_review JOIN book_user WHERE book_review.book_id = ".$searchId." AND book_user.user_name = '".$_SESSION['uid']."' AND book_review.review_type = 1"; // get how many times you read this book
