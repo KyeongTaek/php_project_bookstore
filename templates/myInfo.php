@@ -49,7 +49,7 @@
     $result_row = $result->fetch();
     $isAdmin = $result_row['user_admin'];
 
-    echo '<h4>ID : '.$_SESSION['uid'].'</h3><br>';
+    echo '<h4>ID : '.$_SESSION['uid'].'</h4><br>';
     echo '<h4>New PW</h4><input type="text" name="newPw" value=""/><br>';
     echo '<h4>PW Confirm</h4><input type="text" name="confirmPw" value=""/><br>';
     if($isAdmin) { // if user is admin

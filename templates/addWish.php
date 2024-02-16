@@ -10,25 +10,42 @@
       $sql = 'UPDATE `book_stock` SET `book_wish`=1 WHERE `book_id`='.$_GET['id'];
       echo $sql.'<br>';
       
+      $statement = $pdo->prepare($sql);
+      
+      $statement->execute();
+      
 //      echo '<script type="text/javascript">history.go(-2);</script>';
+      echo '<script type="text/javascript">location.href = "../index.php"</script>';
     }
     else if(isset($_POST['bookAuthor'])) { // new book info
-      $sql = "INSERT INTO `book_info`(`book_title`, `book_author`, `book_publisher`) VALUES '".
+      $sql = "INSERT INTO `book_info` (`book_title`, `book_author`, `book_publisher`) VALUES ('".
       $_POST['bookTitle']."', '".$_POST['bookAuthor']."', '".$_POST['bookPublisher']."')";
       echo $sql.'<br>';
+      
+      $statement = $pdo->prepare($sql);
+      $statement->execute();
       
       $sql = "SELECT id FROM book_info WHERE book_title = '".$_POST['bookTitle']."' AND book_author = '".$_POST['bookAuthor']."'";
       echo $sql.'<br>';
       
-      $id = 17;      //example
+      $result = $pdo->query($sql);
       
-//      echo '<script type="text/javascript">location.href = "addWish.php?id='.$id.'"</script>';
+//      $id = 17;      //example
+      $id = $result->fetchColumn();
+      
+      $sql = "INSERT INTO `book_stock` (`book_id`, `book_count`) VALUES (".$id.", 0)";
+      echo $sql.'<br>';
+      
+      $statement = $pdo->prepare($sql);
+      $statement->execute();
+      
+      echo '<script type="text/javascript">location.href = "addWish.php?id='.$id.'"</script>';
     }
     else { // from 'No results! Add to wish list?' alert
       echo '<form action="" method="post">';
-      echo '  <input type="text" name="bookTitle" value="'.$_GET['bookTitle'].'" />';
-      echo '  <input type="text" name="bookAuthor" value="" />';
-      echo '  <input type="text" name="bookPublisher" value=""/>';
+      echo '  <h3> bookTitle : <input type="text" name="bookTitle" value="'.$_GET['bookTitle'].'" /> </h3><br>';
+      echo '  <h3> bookAuthor : <input type="text" name="bookAuthor" value="" /> </h3><br>';
+      echo '  <h3> bookPublisher : <input type="text" name="bookPublisher" value=""/> </h3><br>';
       echo '  <input type="submit" value="submit" />';
       echo '</form>';
     }

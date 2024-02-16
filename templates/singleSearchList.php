@@ -20,13 +20,17 @@
     echo '  <tr>';
     echo '    <td> <a href="bookInfo.php?id='.$searchId.'"> <input type="button" name="bookInfo" value="bookInfo"> </a></td>';
     echo '    <td> <a href="reviewList.php?id='.$searchId.'"> <input type="button" name="bookReview" value="bookReview"> </a></td>';
-    echo '    <td> <a href="addWish.php?id='.$searchId.'"> <input type="button" name="addWish" value="addWish"> </td>';
-    echo '    <td> <input type="button" name="lend" value="lend"> </td>';
-    echo '    <td> <input type="button" name="buy" value="buy"> </td>';
+    echo '    <td> <a href="addWish.php?id='.$searchId.'"> <input type="button" name="addWish" value="addWish"> </a></td>';
+    
+    echo '    <td> <a href="addOrderLog.php?id='.$searchId.'&source=lend"> <input type="button" name="lend" value="lend"> </a></td>';
+    echo '    <td> <a href="addOrderLog.php?id='.$searchId.'&source=buy"> <input type="button" name="buy" value="buy"> </a></td>';
+    
     echo '  </tr>';
     echo '  <tr>';
-    echo '    <td> <input type="button" name="own" value="own"> </td>';
-    echo '    <td> <input type="button" name="deposit" value="deposit"> </td>';
+    
+    echo '    <td> <a href="addOrderLog.php?id='.$searchId.'&source=own"> <input type="button" name="own" value="own"> </a></td>';
+    echo '    <td> <a href="addOrderLog.php?id='.$searchId.'&source=deposit"> <input type="button" name="deposit" value="deposit"> </a></td>';
+    
     if($searchCount == 0) {
       echo '<td> You have never read this book </td>';
      }

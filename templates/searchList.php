@@ -16,7 +16,7 @@
       echo '<script type="text/javascript">';
       echo '  var rst = confirm("No results! Add to wish list?");';
       echo '  if(rst)';
-      echo '    echo '<script type="text/javascript">location.href = "addWish.php?bookTitle='.$_GET['search_content'].'"</script>';';
+      echo '    location.href = "addWish.php?bookTitle='.$_GET['search_content'].'";';
       echo '  else';
       echo '    alert("You chose no!");';
       echo '</script>';
@@ -35,13 +35,13 @@
         $searchLeft = $row['book_count'];
         $searchId = $row['id'];
         
-        if(!isset($_SESSION['uid'])) {
+        if(!isset($_SESSION['uid'])) { // not logged
           $searchCount = 0;
           $ownTot = 0;
           
   //        echo 'blahblahblah<br>';
         }
-        else {
+        else { // logged
           $sql = "SELECT COUNT(*) FROM book_review JOIN book_user WHERE book_review.book_id = ".$searchId." AND book_user.user_name = '".$_SESSION['uid']."' AND book_review.review_type = 1"; // get how many times you read this book
   //        echo $sql.'<br>';
           
