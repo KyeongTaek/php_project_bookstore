@@ -22,9 +22,7 @@
     }
     
     if(isset($_SESSION['uid'])) { // if logged
-    
       singleReviewList($_SESSION['uid'], "", ""); // put one extra form(for the user to write)
-      echo '<input type="checkbox" name="fin" value="FIN" />FIN';
     }
   } catch(PDOException $e) {
     echo 'DB 접속 오류 : '.$e->getMessage().
