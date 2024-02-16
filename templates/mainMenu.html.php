@@ -18,7 +18,7 @@
         }
       ?>
       <li style="display: inline;"><a href="templates/myInfo.php">myinfo</a></li>
-      <li style="display: inline;"><a href="templates/orderList.html">orderList</a></li>
+      <li style="display: inline;"><a href="templates/orderList.php">orderList</a></li>
       <li style="display: inline;"><a href="templates/readingStatus.html">readingStatus</a></li>
     </ul>
   </nav>
