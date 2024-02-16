@@ -14,7 +14,10 @@
   $result = $pdo->query($sql);
   $user = $result->fetch();
   
-  if($_POST['user_pw'] == $user['user_pw']) { // typed pw == db pw --> logged in
+  if($user == "") {
+    echo 'LOGIN FAILED!! USER DOES NOT EXIST!!';
+  }  
+  else if($_POST['user_pw'] == $user['user_pw']) { // typed pw == db pw --> logged in
     $_SESSION['uid'] = $_POST['user_id']; // create id, pw session
     $_SESSION['password'] = $_POST['user_pw'];
     
@@ -24,5 +27,5 @@
     echo 'LOGIN FAILED!!';
   }
   
-//  echo '<script type="text/javascript">location = "../index.php";</script>';
+  echo '<script type="text/javascript">history.go(-2);</script>';
 ?>
