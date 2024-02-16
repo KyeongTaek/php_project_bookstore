@@ -1,12 +1,12 @@
 <?php
   session_start();
-  include_once __DIR__.'/singleSearchList.php';
+  include_once __DIR__.'/singleReviewList.php';
   
   try {
     $pdo = new PDO('mysql:host=192.168.1.34; dbname=kt_php_bookstore; charset=utf8', 'root', 'sj4321');
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
-    $sql = "SELECT book_info.book_cover, book_info.book_title, book_info.book_author, book_info.book_publisher, book_info.book_cost, book_stock.book_count, book_info.id FROM book_info INNER JOIN book_stock ON book_info.id = book_stock.book_id WHERE book_info.book_title LIKE '%".$_GET['search_content']."%'"; // get book info
+    $sql = "SELECT user_id, review_content, review_time FROM book_review WHERE book_id = ".
 //    echo $sql.'<br>';
     
     $result = $pdo->query($sql);

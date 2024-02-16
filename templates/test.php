@@ -1,5 +1,5 @@
 <?php
-      include_once __DIR__.'/secondsingle.php';
+      include_once __DIR__.'/singleSearchList.php';
       
       $searchImage = '<img src="../images/cosmos.jpg">';
       
@@ -13,5 +13,5 @@
       $searchCount = 0;
       $ownTot = 0;
       
-      secondsingle($searchImage, $searchTitle, $searchAuthor, $searchPublication, $searchPrice, $searchLeft, $searchId, $searchCount, $ownTot);
+      singleSearchList($searchImage, $searchTitle, $searchAuthor, $searchPublication, $searchPrice, $searchLeft, $searchId, $searchCount, $ownTot);
 ?>
