@@ -11,14 +11,14 @@
     }
     $sql = "SELECT id FROM book_user WHERE user_name = '".$_SESSION['uid']."'";
     $result = $pdo->query($sql);
-    $id = $result->fetch();
+    $id = $result->fetch()['id'];
     
     $sql = "SELECT book_order.id, book_order.order_date, book_order.user_addr, book_info.book_title, book_info.book_cost, book_order.order_amount, book_order.order_type, book_order.order_state from book_order INNER JOIN book_info ON book_order.book_id = book_info.id WHERE book_order.user_id = ".$id;
 //    echo $sql.'<br>';
     
     $result = $pdo->query($sql);
     
-    echo '<table>';
+    echo '<table border="1">';
     echo '<tr>';
     echo '  <th>id</th>';
     echo '  <th>date</th>';
