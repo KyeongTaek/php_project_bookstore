@@ -22,7 +22,7 @@
     echo '    <td> <a href="reviewList.php?id='.$searchId.'"> <input type="button" name="bookReview" value="bookReview"> </a></td>';
     echo '    <td> <a href="addWish.php?id='.$searchId.'"> <input type="button" name="addWish" value="addWish"> </a></td>';
     
-    echo '    <td> <a href="addOrderLog.php?id='.$searchId.'&source=lend"> <input type="button" name="lend" value="lend"> </a></td>';
+    echo '    <td> <a href="addOrderLog.php?id='.$searchId.'&source=lend&amount='.$"> <input type="button" name="lend" value="lend"> </a></td>';
     echo '    <td> <a href="addOrderLog.php?id='.$searchId.'&source=buy"> <input type="button" name="buy" value="buy"> </a></td>';
     
     echo '  </tr>';
@@ -30,6 +30,8 @@
     
     echo '    <td> <a href="addOrderLog.php?id='.$searchId.'&source=own"> <input type="button" name="own" value="own"> </a></td>';
     echo '    <td> <a href="addOrderLog.php?id='.$searchId.'&source=deposit"> <input type="button" name="deposit" value="deposit"> </a></td>';
+    
+    echo '    <td> <input type="hidden" name="searchid" value="'.$searchId.'"> amount : <input type="text" name="amount"> </td>';
     
     if($searchCount == 0) {
       echo '<td> You have never read this book </td>';
