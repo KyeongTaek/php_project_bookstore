@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="ko">
   <head>
+    <?php
+      session_start();
+    ?>
+    
     <meta charset="utf-8">
     <title>php_project_bookstore</title>
     <link type="text/css" rel="stylesheet" href="./css/mainLayout.css" />
@@ -18,8 +22,6 @@
       try {
         $pdo = new PDO('mysql:host=192.168.1.34; dbname=kt_php_bookstore; charset=utf8', 'root', 'sj4321');
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    
-        echo 'MySQL 접속 성공 1';
       } catch(PDOException $e) {
         echo 'DB 접속 오류 : '.$e->getMessage().
                             '<br>오류 발생 파일 : '.$e->getFile().
@@ -28,22 +30,12 @@
     ?>
     
     
-    <header style="background-color:cyan;">
-      <nav>
-        <ul style="display: inline; list-style-type: none;">
-          <li style="display: inline;">
-            <a href="index.php">
-              <img src="images/logo.png" width="30%" height="30%" alt="LOGO IS MISSING...">
-            </a>
-          </li>
-          <li style="display: inline;"><a href="templates/signupFrame.html">sign up</a></li>
-          <li style="display: inline;"><a href="./templates/loginFrame.html">sign in</a></li>
-          <li style="display: inline;"><a href="./templates/myInfo.html">myinfo</a></li>
-          <li style="display: inline;"><a href="./templates/orderList.html">orderList</a></li>
-          <li style="display: inline;"><a href="./templates/readingStatus.html">readingStatus</a></li>
-        </ul>
-      </nav>
-    </header>
+    <?php
+      ob_start();
+      include __DIR__.'/templates/mainMenu.html.php';
+      $headerOutput = ob_get_clean();
+      echo $headerOutput;
+    ?>
     
     
     <div id = "content" style="background-color:magenta;">
@@ -67,8 +59,8 @@
     </div>
     
     
-    <footer style="background-color:yellow;">
-      <h3><em>Project : BookStore</em>, by LimKyeongtaek</h3>
-    </footer>
+    <?php
+      include __DIR__.'/templates/footer.html.php';
+    ?>
   </body>
 </html>
