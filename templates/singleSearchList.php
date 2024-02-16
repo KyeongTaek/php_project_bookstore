@@ -20,7 +20,7 @@
     echo '  <tr>';
     echo '    <td> <a href="bookInfo.php?id='.$searchId.'"> <input type="button" name="bookInfo" value="bookInfo"> </a></td>';
     echo '    <td> <a href="reviewList.php?id='.$searchId.'"> <input type="button" name="bookReview" value="bookReview"> </a></td>';
-    echo '    <td> <input type="button" name="addWish" value="addWish"> </td>';
+    echo '    <td> <a href="addWish.php?id='.$searchId.'"> <input type="button" name="addWish" value="addWish"> </td>';
     echo '    <td> <input type="button" name="lend" value="lend"> </td>';
     echo '    <td> <input type="button" name="buy" value="buy"> </td>';
     echo '  </tr>';

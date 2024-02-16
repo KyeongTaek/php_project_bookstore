@@ -77,7 +77,7 @@
               
               $result = $pdo->query($sql);
               
-              $idx = 0;
+              static $idx = 0;
               foreach($result as $row) { // ex) $id_list[10] = 17, $img_list[10] = cosmos.jpg
                 $id_list[$idx] = $row['id'];
                 $img_list[$idx] = $row['book_cover'];

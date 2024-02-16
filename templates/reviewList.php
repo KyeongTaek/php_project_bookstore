@@ -6,7 +6,7 @@
     $pdo = new PDO('mysql:host=192.168.1.34; dbname=kt_php_bookstore; charset=utf8', 'root', 'sj4321');
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
-    $sql = "SELECT book_user.user_name, book_review.review_content, book_review.review_time FROM book_review INNER JOIN book_user ON book_review.user_id = book_user.id WHERE book_id = ".$_GET['id'];    
+    $sql = "SELECT book_review.review_content, book_review.review_time, book_user.user_name FROM book_review INNER JOIN book_user ON book_review.user_id = book_user.id WHERE book_id = ".$_GET['id']." order by book_review.id";    
 //    echo $sql.'<br>';
     
     $result = $pdo->query($sql);
