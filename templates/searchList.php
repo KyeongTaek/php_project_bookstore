@@ -2,6 +2,8 @@
   session_start();
   include_once __DIR__.'/singleSearchList.php';
   
+  echo '<script type="text/javascript" src="makeOrderUrl.js"></script>';
+  
   try {
     $pdo = new PDO('mysql:host=192.168.1.34; dbname=kt_php_bookstore; charset=utf8', 'root', 'sj4321');
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -24,6 +26,7 @@
     else { // books exist?
       $result = $pdo->query($sql);
       
+      $cnt = 0;
       foreach($result as $row) {
 //      echo 'row start! <br>';
       
@@ -76,7 +79,8 @@
             }
           }
         }
-        singleSearchList($searchImage, $searchTitle, $searchAuthor, $searchPublication, $searchPrice, $searchLeft, $searchId, $searchCount, $ownTot);
+        singleSearchList($searchImage, $searchTitle, $searchAuthor, $searchPublication, $searchPrice, $searchLeft, $searchId, $searchCount, $ownTot, $cnt);
+        $cnt++;
       }
     }
     

@@ -1,5 +1,5 @@
 <?php
-  function singleOrderList($orderId, $orderDate, $orderAddr, $orderBookTitle, $orderBookCost, $orderAmount, $orderType, $orderState) {
+  function singleOrderList($orderId, $orderDate, $orderAddr, $orderBookTitle, $orderBookCost, $orderAmount, $orderType, $orderState, $cnt) {
     session_start();
     
 //    $_SESSION['origin_id'] = $orderId;
@@ -20,6 +20,8 @@
     echo '<td>'.$orderType.'</td>';
     echo '<td>'.$orderState.'</td>';
 //    echo '<td> <a href="addRefundLog.php?id='.$orderId.'&date='.$orderDate.'&addr='.$orderAddr.'&title='.$orderBookTitle.'&cost='.$orderBookCost.'&amount='.$orderAmount.'&type='.$orderType.'&state='.$orderState.'"'> <input type="button" name="refund" value="refund"/> </a></td>';    
-    echo '<td> <a href="addRefundLog.php?orderId='.$orderId.'"> <input type="button" name="refund" value="refund"/> </a></td>';
+    
+//    echo '<td> <a href="addRefundLog.php?orderId='.$orderId.'"> <input type="button" name="refund" value="refund"/> </a></td>';
+    echo '<td> <input type="button" name="refund" value="refund" onclick="makeRefundUrl('.$cnt.', '.$orderId.')"/> </td>';
   }
 ?>

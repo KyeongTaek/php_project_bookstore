@@ -29,7 +29,8 @@
     echo '  <th>type</th>';
     echo '  <th>state</th>';
     echo '</tr>';
-        
+    
+    $cnt = 0;    
     foreach($result as $row) {
       $orderId = $row['id'];
       $orderDate = $row['order_date'];
@@ -41,7 +42,8 @@
       $orderState = $row['order_state'];
       
       echo '<tr>';  
-      singleOrderList($orderId, $orderDate, $orderAddr, $orderBookTitle, $orderBookCost, $orderAmount, $orderType, $orderState);
+      singleOrderList($orderId, $orderDate, $orderAddr, $orderBookTitle, $orderBookCost, $orderAmount, $orderType, $orderState, $cnt);
+      $cnt++;
       echo '</tr>';
     }
     echo '</table>';

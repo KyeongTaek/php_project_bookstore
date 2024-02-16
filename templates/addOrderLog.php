@@ -5,7 +5,7 @@
   try {
     $pdo = new PDO('mysql:host=192.168.1.34; dbname=kt_php_bookstore; charset=utf8', 'root', 'sj4321');
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  
+    
     $order_type = 0;
     
     if($_GET['source'] == 'own') {
@@ -22,7 +22,7 @@
       $result = $pdo->query($sql);
       $userInfo = $result->fetch();
       
-      $sql = "INSERT INTO `book_order` (`user_id`, `user_addr`, `book_id`, `order_amount`, `order_date`, `order_state`, `order_type`) VALUES (".$userInfo['id'].", '".$userInfo['user_addr']."', ".$_GET['id'].", 999, '".date("Y-m-d")."', 1, ".$order_type.")";
+      $sql = "INSERT INTO `book_order` (`user_id`, `user_addr`, `book_id`, `order_amount`, `order_date`, `order_state`, `order_type`) VALUES (".$userInfo['id'].", '".$userInfo['user_addr']."', ".$_GET['id'].", ".$_GET['amount'].", '".date("Y-m-d")."', 1, ".$order_type.")";
       echo $sql.'<br>';
         
       $statement = $pdo->prepare($sql);
@@ -95,7 +95,7 @@
         $result = $pdo->query($sql);
         $userInfo = $result->fetch();
         
-        $sql = "INSERT INTO `book_order` (`user_id`, `user_addr`, `book_id`, `order_amount`, `order_date`, `order_state`, `order_type`) VALUES (".$userInfo['id'].", '".$userInfo['user_addr']."', ".$_GET['id'].", 999, '".date("Y-m-d")."', 1, ".$order_type.")";
+        $sql = "INSERT INTO `book_order` (`user_id`, `user_addr`, `book_id`, `order_amount`, `order_date`, `order_state`, `order_type`) VALUES (".$userInfo['id'].", '".$userInfo['user_addr']."', ".$_GET['id'].", ".$_GET['amount'].", '".date("Y-m-d")."', 1, ".$order_type.")";
         echo $sql.'<br>';
         
         $statement = $pdo->prepare($sql);
